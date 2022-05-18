@@ -1,0 +1,34 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # added setting
+  host: db
+  username: root
+  password: password
+
+development:
+  <<: *default
+  database: harukabe_development
+
+
+test:
+  <<: *default
+  database: harukabe_test
+
+staging:
+  <<: *default
+  database: harukabe_staging
+  username: root
+  password: harukabe
+
+production:
+  <<: *default
+  database: harukabe_production
+  # username: app
+  # password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+
+
+
